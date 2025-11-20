@@ -14,7 +14,7 @@ let processedBass = tranceBass.gain(duckingPattern);
 $: stack(
   tranceKick,
   processedBass
-).gain(2.35).loopAt(2).hpf(slider(10, 0, 100, 0.1));
+).gain(1.8).loopAt(2).hpf(slider(10, 0, 100, 0.1));
 
 const drums = sound("bd:2*4 ,rolandtr909_sd*2, [~ rolandtr808_hh*2]*4").lpf(4000)
 const bass = n("<~ ~ [0]*4 <9 9 7 7>, ~ ~ ~ [~ [~ <9 9 7 7>]]>*4")
