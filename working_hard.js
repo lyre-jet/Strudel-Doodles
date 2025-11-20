@@ -2,7 +2,7 @@ setCpm(125/4)
 let tranceKick = s("bd:2*4").end(0.2).decay(0.04).lpf(150).gain(4);
 
 // Define the bassline (uses a low sine wave)
-let tranceBass = s("sine:1*8").note("d1").gain(0.6).hpf(slider(3.3, 0, 5, 0.1));
+let tranceBass = s("sine*8").note("d1").gain(4).hpf(slider(3.3, 0, 5, 0.1));
 
 // Define the gain pattern for 'sidechain ducking'
 let duckingPattern = every(4, "1 2");
@@ -14,7 +14,7 @@ let processedBass = tranceBass.gain(duckingPattern);
 $: stack(
   tranceKick,
   processedBass
-).gain(5).loopAt(2).hpf(slider(10, 0, 100, 0.1));
+).gain(2.35).loopAt(2).hpf(slider(10, 0, 100, 0.1));
 
 const drums = sound("bd:2*4 ,rolandtr909_sd*2, [~ rolandtr808_hh*2]*4").lpf(4000)
 const bass = n("<~ ~ [0]*4 <9 9 7 7>, ~ ~ ~ [~ [~ <9 9 7 7>]]>*4")
@@ -38,4 +38,4 @@ const high =  arrange([2, note("[~ 16 16*2 16 ~ 16 16*2 16]")], [2, note("[~ 15 
   .delay(0.38).room(slider(0.716, 0, 4))
   .fm(0.8 ).lpenv(slider(3, 1, 10, 1) )
 
-stack(drums, bass, mid, high)
+$: stack(drums, bass, mid, high).gain(0.8)
