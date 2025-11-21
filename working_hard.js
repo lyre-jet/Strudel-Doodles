@@ -38,6 +38,6 @@ const high =  arrange([2, note("[~ 16 16*2 16 ~ 16 16*2 16]")], [2, note("[~ 15 
   .delay(0.38).room(slider(0.716, 0, 4))
   .fm(0.8 ).lpenv(slider(3, 1, 10, 1) )
 
-$: stack(drums, bass).gain(0.8)
-$: mid.gain(0.5)
-$: high.gain(0.3)
+ stack(drums, bass).gain(slider(0.8, 0,1))
+$: mid.gain(slider(0.5, 0,1))
+$: high.gain(slider(0.3, 0,1))
